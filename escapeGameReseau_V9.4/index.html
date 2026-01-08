@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EscapeGame Réseau — Mission</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- jsPDF pour génération du rapport PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <!-- MODIFIÉ UNIQUEMENT ICI -->
+      <h1>Réseau Central — <span class="blink">INSTABLE</span></h1>
+      <div id="status">Statut : en attente</div>
+    </header>
+
+    <main class="terminal">
+      <!-- Écran d’identification -->
+      <section id="splash">
+        <h2>Identification</h2>
+        <form id="startForm" class="start-box">
+          <label>Nom de l'enseignant
+            <input type="text" id="teacherName" required />
+          </label>
+          <div style="height:32px;"></div>
+          <div id="agentsForm">
+            <label>Agent 1<input type="text" id="agent1" /></label>
+            <label>Agent 2<input type="text" id="agent2" /></label>
+            <label>Agent 3<input type="text" id="agent3" /></label>
+            <label>Agent 4<input type="text" id="agent4" /></label>
+          </div>
+          <button id="startBtn" type="submit">Démarrer la mission</button>
+        </form>
+      </section>
+
+      <!-- Zone de jeu -->
+      <section id="gameSection" class="hidden">
+        <div id="glitchOverlay" class="glitch hidden"></div>
+        <div id="voiceText">Connexion au réseau…</div>
+        <div id="timer">10:00</div>
+        <div id="gameContent"></div>
+        <div id="agentsDisplay"></div>
+
+        <div id="enigme1" style="display: none; position: relative;">
+          <img id="image_1" src="images/image_1.png" style="display: block; position: absolute; left: 0; top: 0;">
+          <img id="image_2" src="images/image_2.png" style="display: none; position: absolute; left: 0; top: 0;">
+          <img id="image_3" src="images/image_3.png" style="display: none; position: absolute; left: 0; top: 0;">
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>EscapeGame — Version locale</small>
+    </footer>
+  </div>
+
+  <!-- Audios -->
+  <audio id="audio_radio_static" src="audios/radio_static.mp3" preload="auto"></audio>
+  <audio id="audio_intro_agents" src="audios/intro_agents_connexion.mp3" preload="auto"></audio>
+  <audio id="audio_glitch" src="audios/glitch_brief.mp3" preload="auto"></audio>
+  <audio id="audio_connexion_secure" src="audios/connexion_secure.mp3" preload="auto"></audio>
+  <audio id="audio_suspense_intro" src="audios/musique_suspense_intro.mp3" preload="auto"></audio>
+  <audio id="audio_parasite_radio" src="audios/parasite_radio.mp3" preload="auto"></audio>
+  <audio id="audio_clic" src="audios/audio_clic.mp3" preload="auto"></audio>
+  <audio id="audio_bip" src="audios/audio_bip.mp3" preload="auto"></audio>
+
+  <!-- Ajout pour l'énigme 2 -->
+  <audio id="audio_internet" src="audios/audio_internet.mp3" preload="auto"></audio>
+
+  <!-- Ajout pour ambiance de fond + son erreur -->
+  <audio id="audio_ambiance" src="audios/ambiance-jeu.mp3" preload="auto" loop></audio>
+  <audio id="audio_erreur" src="audios/son_erreur.mp3" preload="auto"></audio>
+
+  <!-- AJOUTS MINIMAUX POUR LE TIMER ET LA FIN DE MISSION -->
+  <!-- Alerte 5 minutes restantes -->
+  <audio id="audio_suspense_mid" src="audios/musique_suspense_mid.mp3" preload="auto"></audio>
+
+  <!-- Alerte finale 30 secondes -->
+  <audio id="audio_alerte_finale" src="audios/alerte_finale.mp3" preload="auto"></audio>
+
+  <!-- Fin de mission échouée -->
+  <audio id="audio_erreur_reseau" src="audios/erreur_reseau.mp3" preload="auto"></audio>
+  <audio id="audio_extinction_systeme" src="audios/extinction_systeme.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

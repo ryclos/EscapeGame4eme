@@ -1,0 +1,370 @@
+/* ============================================================
+   STYLE GLOBAL — THÈME NÉO-APOCALYPTIQUE / TERMINAL CRT
+   ============================================================ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  color: #0f0;
+  font-family: monospace;
+  text-shadow: 0 0 4px #0a0;
+  overflow-x: hidden;
+}
+
+/* Scanlines CRT */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   STRUCTURE GÉNÉRALE
+   ============================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  padding: 12px;
+  background: #111;
+  text-align: center;
+  color: #0f0;
+  border-bottom: 2px solid #0f0;
+  box-shadow: 0 0 10px #0f0 inset;
+}
+
+h1, h2, h3 {
+  text-shadow: 0 0 6px #0f0;
+  letter-spacing: 2px;
+}
+
+/* Titre INSTABLE clignotant */
+.blink {
+  animation: blinkAnim 1s infinite alternate;
+  color: #f00;
+  text-shadow: 0 0 8px #f00;
+}
+
+@keyframes blinkAnim {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* ============================================================
+   TERMINAL PRINCIPAL
+   ============================================================ */
+
+.terminal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================================================
+   FORMULAIRE D’AUTHENTIFICATION
+   ============================================================ */
+
+.start-box {
+  border: 2px solid #0f0;
+  padding: 15px;
+  width: 360px;
+  background: #020;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #0f0 inset;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+#teacherName {
+  width: 100%;
+  margin-top: 6px;
+  background: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+#agentsForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#agentsForm label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+#agent1, #agent2, #agent3, #agent4 {
+  width: 100%;
+  background: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+/* ============================================================
+   AFFICHEUR D'ÉTAT ET DIALOGUE
+   ============================================================ */
+
+#voiceText {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: 1px solid #0f0;
+  background: rgba(0, 40, 0, 0.4);
+  width: 90%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  animation: scanPulse 1.2s infinite alternate;
+}
+
+@keyframes scanPulse {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+#timer {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ============================================================
+   ZONE DE JEU
+   ============================================================ */
+
+#gameContent {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 500px;
+  border: 1px solid #0f0;
+  padding: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 30, 0, 0.35);
+  box-shadow: inset 0 0 20px #0f0;
+}
+
+/* Agents affichés en bas */
+#agentsDisplay {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#agentsDisplay span {
+  background: #0f0;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 0 6px #0f0;
+}
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  background: #0f0;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: 0.15s ease;
+}
+
+button:hover {
+  background: #9f9;
+}
+
+button:active {
+  background: #6f6;
+}
+
+/* ============================================================
+   GLITCH OVERLAY
+   ============================================================ */
+
+.glitch {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,0,0.05),
+    rgba(0,255,0,0.05) 2px,
+    rgba(0,0,0,0.2) 4px
+  );
+  animation: glitchMove 0.2s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes glitchMove {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+/* ============================================================
+   ÉNIGME 5 — ALGOGRAMME (image ~661 × 775)
+   ============================================================ */
+
+#flowchartContainer {
+  position: relative;
+  width: 661px;
+  height: 775px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+#flowchartContainer img {
+  width: 661px;
+  height: 775px;
+  display: block;
+  pointer-events: none; /* permet aux dropzones de capter le drag */
+}
+
+.dropzone {
+  position: absolute;
+  border: 2px dashed #0f0;
+  background: rgba(0,40,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background 0.2s;
+  height: 90px; /* hauteur cohérente avec le JS */
+}
+
+.dropzone:hover {
+  background: rgba(0,255,0,0.1);
+}
+
+.draggable {
+  background: #000;
+  border: 1px solid #0f0;
+  padding: 4px 6px;
+  margin: 0;
+  cursor: grab;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.1s ease;
+  font-family: monospace;
+  color: #0f0;
+}
+
+.draggable:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* Empêcher la sélection et le drag natif des images uniquement */
+img {
+  user-select: none !important;
+  -webkit-user-drag: none;
+}
+
+/* On laisse le drag HTML5 sur les vignettes */
+.draggable {
+  user-select: none !important;
+}
+
+/* ============================================================
+   TERMINAL INPUT — ÉNIGME 4
+   ============================================================ */
+
+#pingCommand {
+  background: #000;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 4px;
+  font-family: monospace;
+  width: 220px;
+  text-shadow: 0 0 5px #0f0;
+}
+
+/* ============================================================
+   ÉCRAN FINAL — SCORE / RÉCAPITULATIF
+   ============================================================ */
+
+.final-screen {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid #0f0;
+  padding: 20px;
+  margin-top: 20px;
+  background: #010;
+  text-align: center;
+  box-shadow: 0 0 25px #0f0 inset;
+}
+
+.final-screen h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px #0f0;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.score-table th,
+.score-table td {
+  border: 1px solid #0f0;
+  padding: 8px;
+}
+
+.score-table th {
+  background: rgba(0,120,0,0.35);
+}
+
+/* Bouton Recommencer / PDF */
+#reloadGame,
+#downloadPDF {
+  margin-top: 20px;
+  width: 220px;
+  background: #0f0;
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: transform 0.15s;
+}
+
+#reloadGame:hover,
+#downloadPDF:hover {
+  transform: scale(1.05);
+}
+.restored { color:#0f0; text-shadow:0 0 8px #0f0; }
